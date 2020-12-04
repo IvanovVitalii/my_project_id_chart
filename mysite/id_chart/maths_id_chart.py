@@ -11,11 +11,11 @@ t_cooling = 7
 
 def save(name='', fmt='png'):
     pwd = os.getcwd()
-    i_path = './pictures/{}'.format(fmt)
+    i_path = f'./pictures/{fmt}'
     if not os.path.exists(i_path):
         os.mkdir(i_path)
     os.chdir(i_path)
-    plt.savefig('{}.{}'.format(name, fmt))
+    plt.savefig(f'{name}.{fmt}')
     os.chdir(pwd)
 
 
