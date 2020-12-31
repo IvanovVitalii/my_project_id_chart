@@ -1,6 +1,8 @@
 import os
 import numpy as np
 import matplotlib.pyplot as plt
+import base64
+from io import BytesIO
 # from scipy.interpolate import interp
 
 
@@ -11,12 +13,19 @@ t_cooling = 7
 
 def save(name='', fmt='png'):
     pwd = os.getcwd()
-    i_path = f'./pictures/{fmt}'
+    i_path = f'{pwd}/pictures/{fmt}'
     if not os.path.exists(i_path):
         os.mkdir(i_path)
     os.chdir(i_path)
     plt.savefig(f'{name}.{fmt}')
     os.chdir(pwd)
+
+
+def save_bytes():
+    buf = BytesIO()
+    plt.savefig(buf, format="png")
+    data = base64.b64encode(buf.getbuffer()).decode("ascii")
+    return data
 
 
 def plot_id():
@@ -346,16 +355,17 @@ def process_x(t1, fi1, d1, h1, t2, fi2, d2, h2, flow):
     pass
 
 
-fig = plt.subplots(figsize=(6, 10))
-plt.axis([0, 30, -25, 55])
-plot_id()
-
 if __name__ == '__main__':
+
+    plt.subplots(figsize=(6, 10))
+    plt.axis([0, 30, -25, 55])
+    plot_id()
 
     z = heat(t1=-22, fi1=95, flow=1000, t2=24)
     print(z)
 
     # plt.grid(True)
-    # save(name='pic_2_1', fmt='png')
+    save(name='pic_2_1', fmt='png')
+    save_bytes()
 
     plt.show()
