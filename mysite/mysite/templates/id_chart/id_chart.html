@@ -1,0 +1,52 @@
+{% extends 'base.html' %}
+
+{% block title %}ID_chart{% endblock %}
+
+{% block content %}
+    <head>
+        <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
+        <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap-theme.min.css">
+    </head>
+
+
+    <center>
+        <table style="width:80%" border="1">
+            <tr>
+                <th>№</th>
+                <th>Расход воздуха, м.куб./ч</th>
+                <th>Температуна первой точки, С</th>
+                <th>Относительная влажность первой точки, %</th>
+                <th>Влагосодержание первой точки, г/кг</th>
+                <th>Энтальпия первой точки, кДж/кг</th>
+                <th>Процесс</th>
+                <th>Температуна второй точки, С</th>
+                <th>Относительная влажность второй точки, %</th>
+                <th>Влагосодержание второй точки, г/кг</th>
+                <th>Энтальпия второй точки, кДж/кг</th>
+                <th>Требуемая мощность, кВт</th>
+                <th>Влагопритоки, кг</th>
+            </tr>
+
+                <tr>
+                    <td>{{1}}</td>
+                    <td>{{flow}}</td>
+                    <td>{{t1}}</td>
+                    <td>{{fi1}}</td>
+                    <td>{{d1}}</td>
+                    <td>{{h1}}</td>
+                    <td>{{process}}</td>
+                    <td>{{t2}}</td>
+                    <td>{{fi2}}</td>
+                    <td>{{d2}}</td>
+                    <td>{{h2}}</td>
+                    <td>{{power}}</td>
+                    <td>{{humidity_inflow}}</td>
+
+                </tr>
+        </table>
+
+        <img src='{{id_image}}' />
+
+    </center>
+
+{% endblock %}
