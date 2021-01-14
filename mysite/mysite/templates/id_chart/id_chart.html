@@ -6,47 +6,135 @@
     <head>
         <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
         <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap-theme.min.css">
+
     </head>
 
 
     <center>
+        <form action="" method="get">
+
         <table style="width:80%" border="1">
-            <tr>
-                <th>№</th>
-                <th>Расход воздуха, м.куб./ч</th>
-                <th>Температуна первой точки, С</th>
-                <th>Относительная влажность первой точки, %</th>
-                <th>Влагосодержание первой точки, г/кг</th>
-                <th>Энтальпия первой точки, кДж/кг</th>
-                <th>Процесс</th>
-                <th>Температуна второй точки, С</th>
-                <th>Относительная влажность второй точки, %</th>
-                <th>Влагосодержание второй точки, г/кг</th>
-                <th>Энтальпия второй точки, кДж/кг</th>
-                <th>Требуемая мощность, кВт</th>
-                <th>Влагопритоки, кг</th>
-            </tr>
+    <thead>
+        <tr>
+            <th>Номер точки</th>
+
+            {% for i in point %}
+                <th>{{i}}</th>
+            {% endfor %}
+        </tr>
+    </thead>
+            <tbody>
+                <tr>
+                    <th>Расход воздуха, м.куб./ч</th>
+
+                    {% for i in point %}
+                        <td>
+                            <input name='flow'>
+                        </td>
+                    {% endfor %}
+                </tr>
 
                 <tr>
-                    <td>{{1}}</td>
-                    <td>{{flow}}</td>
-                    <td>{{t1}}</td>
-                    <td>{{fi1}}</td>
-                    <td>{{d1}}</td>
-                    <td>{{h1}}</td>
-                    <td>{{process}}</td>
-                    <td>{{t2}}</td>
-                    <td>{{fi2}}</td>
-                    <td>{{d2}}</td>
-                    <td>{{h2}}</td>
-                    <td>{{power}}</td>
-                    <td>{{humidity_inflow}}</td>
+                    <th>Температуна первой точки, С</th>
 
+                    {% for i in point %}
+                        <td>{{t1}}</td>
+                    {% endfor %}
                 </tr>
+
+                <tr>
+                    <th>Относительная влажность первой точки, %</th>
+
+                    {% for i in point %}>
+                        <td>{{fi1}}</td>
+                    {% endfor %}
+                </tr>
+
+                <tr>
+                    <th>Влагосодержание первой точки, г/кг</th>
+
+                    {% for i in point %}
+                        <td>{{d1}}</td>
+                    {% endfor %}
+                </tr>
+
+                <tr>
+                    <th>Энтальпия первой точки, кДж/кг</th>
+
+                    {% for i in point %}
+                        <td>{{h1}}</td>
+                    {% endfor %}
+                </tr>
+
+                <tr>
+                    <th>Процесс</th>
+
+                    {% for i in point %}
+                        <td>{{process}}</td>
+                    {% endfor %}
+                </tr>
+
+                <tr>
+                    <th>Температуна второй точки, С</th>
+
+                    {% for i in point %}>
+                        <td>{{t2}}</td>
+                    {% endfor %}
+                </tr>
+
+                <tr>
+                    <th>Относительная влажность второй точки, %</th>
+
+                    {% for i in point %}
+                        <td>{{fi2}}</td>
+                    {% endfor %}
+                </tr>
+
+                <tr>
+                    <th>Влагосодержание второй точки, г/кг</th>
+
+                    {% for i in point %}
+                        <td>{{d2}}</td>
+                    {% endfor %}
+                </tr>
+
+                <tr>
+                    <th>Энтальпия второй точки, кДж/кг</th>
+
+                    {% for i in point %}
+                        <td>{{h2}}</td>
+                    {% endfor %}
+                </tr>
+
+                <tr>
+                    <th>Требуемая мощность, кВт</th>
+
+                    {% for i in point %}
+                        <td>{{power}}</td>
+                    {% endfor %}
+                </tr>
+
+                <tr>
+                    <th>Влагопритоки, кг</th>
+
+                    {% for i in point %}
+                        <td>{{humidity_inflow}}</td>
+                    {% endfor %}
+                </tr>
+            </tbody>
         </table>
+        <input type="submit" value="Show">
+
+
+
+        </form>
 
         <img src='{{id_image}}' />
 
     </center>
+
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js" integrity="sha384-wHAiFfRlMFy6i5SRaxvfOCifBUQy1xHdJ/yoi7FRNXMRBu5WHdZYu1hA6ZOblgut" crossorigin="anonymous"></script>
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js" integrity="sha384-B0UglyR+jN6CkvvICOB2joaf5I4l3gm9GU6Hc1og6Ls7i6U/mkkaduKaBhlAXv9k" crossorigin="anonymous"></script>
 
 {% endblock %}

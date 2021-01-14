@@ -4,19 +4,37 @@ from django.http import HttpResponse
 from .maths_id_chart import *
 
 
-def index(request, flow=None, process=None, t1=None, fi1=None, d1=None, h1=None):
+def index(request, flow=100):
+    if 'flow' in request.GET:
+        context = {}
+        flow = int(request.GET['flow'])
 
-    plt.subplots(figsize=(6, 10))
-    plt.axis([0, 30, -25, 55])
-    plot_id()
+        plt.subplots(figsize=(6, 10))
+        plt.axis([0, 30, -25, 55])
+        plot_id()
 
-    z0 = cooling(t1=32, fi1=40, flow=1000, t2=20)
+        z0 = humidification(t1=24, fi1=3, flow=flow, fi2=60)
+        points = 1
+        point = [i + 1 for i in range(points)]
 
-    data = save_bytes()
+        data = save_bytes()
 
-    id_image = f'data:image/png;base64,{data}'
+        id_image = f'data:image/png;base64,{data}'
+    else:
+        plt.subplots(figsize=(6, 10))
+        plt.axis([0, 30, -25, 55])
+        plot_id()
+
+        z0 = humidification(t1=0, fi1=0, flow=0, fi2=0)
+        points = 1
+        point = [i + 1 for i in range(points)]
+
+        data = save_bytes()
+
+        id_image = f'data:image/png;base64,{data}'
 
     context = {
+        'point': point,
         'flow': z0['flow'],
         't1': z0['t1'],
         'fi1': z0['fi1'],
