@@ -11,18 +11,17 @@
 
 
     <center>
-        <form action="" method="get">
+        <form id="data" action="" method="get">
 
         <table style="width:80%" border="1">
-    <thead>
-        <tr>
-            <th>Номер точки</th>
-
-            {% for i in point %}
-                <th>{{i}}</th>
-            {% endfor %}
-        </tr>
-    </thead>
+            <thead>
+                <tr>
+                    <th>Номер точки</th>
+                    {% for i in point %}
+                        <th>{{i}}</th>
+                    {% endfor %}
+                </tr>
+            </thead>
             <tbody>
                 <tr>
                     <th>Расход воздуха, м.куб./ч</th>
@@ -36,23 +35,72 @@
 
                 <tr>
                     <th>Температуна первой точки, С</th>
-
                     {% for i in point %}
+                        <td>
+                            <input name='t1'>
+                        </td>
+                    {% endfor %}
+                </tr>
+
+                <tr>
+                    <th>Относительная влажность первой точки, %</th>
+                    {% for i in point %}>
+                        <td>
+                            <input name='fi1'>
+                        </td>
+                    {% endfor %}
+                </tr>
+
+                <tr>
+                    <th>Влагосодержание первой точки, г/кг</th>
+                    {% for i in point %}
+                        <td>
+                            <input name='d1'>
+                        </td>
+                    {% endfor %}
+                </tr>
+
+                <tr>
+                    <th>Энтальпия первой точки, кДж/кг</th>
+                    {% for i in point %}
+                        <td>
+                            <input name='h1'>
+                        </td>
+                    {% endfor %}
+                </tr>
+
+                <tr>
+                    <th>Процесс</th>
+                    {% for i in point %}
+                        <td>
+                            <select name='process'>
+                                <option selected="selected">Процесс</option>
+                                <option value="c">Охлаждние</option>
+                                <option value="h">Нагрев</option>
+                                <option value="p">Увлажнение</option>
+                                <option value="a">Адиабатное увлажнение</option>
+
+                            </select>
+                        </td>
+                    {% endfor %}
+                </tr>
+
+                <tr>
+                    <th>Температуна первой точки, С</th>
+                    {% for i in point %}>
                         <td>{{t1}}</td>
                     {% endfor %}
                 </tr>
 
                 <tr>
                     <th>Относительная влажность первой точки, %</th>
-
-                    {% for i in point %}>
+                    {% for i in point %}
                         <td>{{fi1}}</td>
                     {% endfor %}
                 </tr>
 
                 <tr>
                     <th>Влагосодержание первой точки, г/кг</th>
-
                     {% for i in point %}
                         <td>{{d1}}</td>
                     {% endfor %}
@@ -60,55 +108,13 @@
 
                 <tr>
                     <th>Энтальпия первой точки, кДж/кг</th>
-
                     {% for i in point %}
                         <td>{{h1}}</td>
                     {% endfor %}
                 </tr>
 
                 <tr>
-                    <th>Процесс</th>
-
-                    {% for i in point %}
-                        <td>{{process}}</td>
-                    {% endfor %}
-                </tr>
-
-                <tr>
-                    <th>Температуна второй точки, С</th>
-
-                    {% for i in point %}>
-                        <td>{{t2}}</td>
-                    {% endfor %}
-                </tr>
-
-                <tr>
-                    <th>Относительная влажность второй точки, %</th>
-
-                    {% for i in point %}
-                        <td>{{fi2}}</td>
-                    {% endfor %}
-                </tr>
-
-                <tr>
-                    <th>Влагосодержание второй точки, г/кг</th>
-
-                    {% for i in point %}
-                        <td>{{d2}}</td>
-                    {% endfor %}
-                </tr>
-
-                <tr>
-                    <th>Энтальпия второй точки, кДж/кг</th>
-
-                    {% for i in point %}
-                        <td>{{h2}}</td>
-                    {% endfor %}
-                </tr>
-
-                <tr>
                     <th>Требуемая мощность, кВт</th>
-
                     {% for i in point %}
                         <td>{{power}}</td>
                     {% endfor %}
@@ -116,7 +122,6 @@
 
                 <tr>
                     <th>Влагопритоки, кг</th>
-
                     {% for i in point %}
                         <td>{{humidity_inflow}}</td>
                     {% endfor %}

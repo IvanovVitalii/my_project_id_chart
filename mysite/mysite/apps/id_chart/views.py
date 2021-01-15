@@ -5,6 +5,7 @@ from .maths_id_chart import *
 
 
 def index(request, flow=100):
+    print(request.GET)
     if 'flow' in request.GET:
         context = {}
         flow = int(request.GET['flow'])
@@ -14,7 +15,7 @@ def index(request, flow=100):
         plot_id()
 
         z0 = humidification(t1=24, fi1=3, flow=flow, fi2=60)
-        points = 1
+        points = 3
         point = [i + 1 for i in range(points)]
 
         data = save_bytes()
@@ -26,7 +27,7 @@ def index(request, flow=100):
         plot_id()
 
         z0 = humidification(t1=0, fi1=0, flow=0, fi2=0)
-        points = 1
+        points = 3
         point = [i + 1 for i in range(points)]
 
         data = save_bytes()
